@@ -87,7 +87,9 @@ public class Book {
 	}
 
 	
-
+	public String getIdAsString () {
+		return String.valueOf(id);
+	}
 	public static List<Book> getAllBooks() {
 		List<Book> booklist = new ArrayList<>();
 		Connection con;
