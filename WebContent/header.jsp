@@ -36,10 +36,13 @@
             <a class="nav-link" href="AddStudent.jsp">Add Student</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Rent Book</a>
+            <a class="nav-link" href="AddRentBook.jsp">Rent Book</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Return Book</a>
+            <a class="nav-link" href="RentList.jsp">Rent Book List</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ReturnList.jsp">Return Book List</a>
            </li>
           
         </ul>

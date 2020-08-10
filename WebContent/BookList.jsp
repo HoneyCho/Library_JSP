@@ -1,12 +1,12 @@
+
 <%@ include file="header.jsp"%>
-
-
-	<h3>Book List</h3>
-	<%
+<%
 List<Book> books = Book.getAllBooks();
 request.setAttribute("books", books);
 
 %>
+<div class="container">
+	<h2> </h2>
 	<form action="AddBook.jsp">
 		<table class="table">
 
@@ -35,4 +35,5 @@ request.setAttribute("books", books);
 		</table>
 		<input type="submit" value="Add Book" />
 	</form>
+	</div>
 <%@ include file="footer.jsp"%>

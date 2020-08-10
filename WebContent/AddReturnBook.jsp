@@ -14,9 +14,9 @@ request.setAttribute("students", students);
 	<div class="row">
 		<div class="col-sm-12">
 		
-			<form action="SaveRentBook.jsp">
+			<form action="SaveReturnBook.jsp">
 			
-				<h3>RENT BOOK FORM</h3>
+				<h3>RETURN BOOK FORM</h3>
 				Books
 					 <select name="book" class="form-control">
 					<c:forEach items="${books}" var="book">
@@ -34,7 +34,7 @@ request.setAttribute("students", students);
 					</c:forEach>
 					
 				</select> <br>				 
-				 Rent Date <input type="text" name="rent_date" class="form-control" /><br>
+				 Return Date <input type="text" name="return_date" class="form-control" /><br>
 				 
 				
 				 <input type="submit"

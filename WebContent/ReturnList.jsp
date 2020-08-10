@@ -2,9 +2,11 @@
 
 <%
 	ResultSet rs;
-List<Rent> rents = Rent.getAllRents();
+List<Rent> rents = Rent.getAllReturn();
 request.setAttribute("rents", rents);
+
 %>
+
 <div class="container">
 	<h2></h2>
 	<form action="AddRentBook.jsp">
@@ -14,7 +16,7 @@ request.setAttribute("rents", rents);
 					<th>No</th>
 					<th>Book Name</th>
 					<th>Student Name</th>
-					<th>Date</th>
+					<th>Return Date</th>
 
 				</tr>
 			</thead>
@@ -25,12 +27,8 @@ request.setAttribute("rents", rents);
 					<td>${rent.id}</td>
 					<td>${rent.book_name}</td>
 					<td>${rent.student_name}</td>
-					<td>${rent.rent_date }</td>
-					<td><a href="SaveReturn.jsp?rent_id=${rent.id}"
-						class="btn btn-dark">Return</a></td>
-				</tr>
-
-
+					<td>${rent.return_date}</td>
+			
 			</c:forEach>
 
 		</table>

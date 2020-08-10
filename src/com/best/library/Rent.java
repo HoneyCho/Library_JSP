@@ -9,11 +9,12 @@ import java.util.List;
 
 public class Rent {
 	int id;
-
 	int book_id;
 	int student_id;
-	String retrun_date;
+	String rent_date;
 	public String student_name;
+	String book_name;
+	String return_date;
 
 	public String getStudent_name() {
 		return student_name;
@@ -39,8 +40,7 @@ public class Rent {
 		this.return_date = return_date;
 	}
 
-	String book_name;
-	String return_date;
+	
 
 	public int getId() {
 		return id;
@@ -66,20 +66,20 @@ public class Rent {
 		this.student_id = student_id;
 	}
 
-	public String getRetrun_date() {
-		return retrun_date;
+	public String getRent_date() {
+		return rent_date;
 	}
 
-	public void setRetrun_date(String retrun_date) {
-		this.retrun_date = retrun_date;
+	public void setRent_date(String rent_date) {
+		this.rent_date = rent_date;
 	}
 
-	public Rent(int id, int book_id, int student_id, String retrun_date) {
+	public Rent(int id, int book_id, int student_id, String rent_date) {
 		super();
 		this.id = id;
 		this.book_id = book_id;
 		this.student_id = student_id;
-		this.retrun_date = retrun_date;
+		this.rent_date = rent_date;
 	}
 
 	public Rent() {
@@ -93,12 +93,48 @@ public class Rent {
 			Connection con = DB.getConnection();
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(
-					"select Rent.id,Book.name,Student.name,Rent.return_date from Book join Rent on Book.id=Rent.book_id join Student on Rent.student_id=Student.id");
+					"select Rent.id,Book.name,Student.name,Rent.rent_date from Book join Rent on Book.id=Rent.book_id join Student on Rent.student_id=Student.id where Rent.return=0");
 
 			while (rs.next()) {
 				Rent rent = new Rent();
-
+				rent.id= Integer.parseInt(rs.getString("Rent.id"));
 				rent.student_name = rs.getString("Student.name");
+				rent.book_name = rs.getString("Book.name");
+				rent.rent_date= rs.getString("Rent.rent_date");
+
+
+
+				System.out.println("loop");
+
+				rents.add(rent);
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return rents;
+
+	}
+	
+	public static List<Rent> getAllReturn() {
+		List<Rent> rents = new ArrayList<>();
+
+		try {
+			Connection con = DB.getConnection();
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(
+					"select Rent.id,Book.name,Student.name,Rent.return_date from Book join Rent on Book.id=Rent.book_id join Student on Rent.student_id=Student.id where Rent.return=1");
+			while (rs.next()) {
+				Rent rent = new Rent();
+				rent.id= Integer.parseInt(rs.getString("Rent.id"));
+				rent.student_name = rs.getString("Student.name");
+				rent.book_name = rs.getString("Book.name");
+				rent.return_date= rs.getString("Rent.return_date");
+
+
 
 				System.out.println("loop");
 
